@@ -4,8 +4,7 @@ import React from 'react';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '../lib/apollo';
 
-const App = ({ Component, pageProps }) => {
-    console.log("🚀 ~ file: _app.js ~ line 8 ~ App ~ Component", Component)
+const MyApp = ({ Component, pageProps }) => {
     const apolloClient = useApollo(pageProps.initialApolloState);
 
     return (
@@ -15,4 +14,4 @@ const App = ({ Component, pageProps }) => {
     );
 };
 
-export default App;
+export default MyApp;

@@ -1,0 +1,20 @@
+.container{
+    max-width: 42rem;
+    padding: 2rem 1rem;
+    margin: 3rem auto 6rem;
+    background-color: rgb(149, 226, 226);
+}
+
+.card {
+    margin: 2rem 0;    
+    padding: 2rem;
+    border-radius: 5px;
+    background-color: rgb(250, 250, 250);
+    box-shadow: gray;
+    font-size: 1.1rem;
+}
+.card_title{
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+}

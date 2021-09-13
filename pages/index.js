@@ -1,13 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { AuthContext } from '../context/authContext';
 import { useQuery } from '@apollo/client';
 import { initializeApollo } from '../lib/apollo';
 import { getPosts } from '../lib/queries/query';
 import styles from './styles/index.module.css'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 export default function Home() {
   const { data, error, loading } = useQuery(getPosts);
+  const {state, dispatch} = useContext(AuthContext)
+  // react router
+  const router = useRouter()
 
+  const updateUserName = () => {
+    dispatch({
+      type: 'LOGGED_IN_USER',
+      payload: 'Batdemberel'
+    })
+  }
+  console.log(router)
   if (loading) return <h1>Loading...</h1>;
 
   if (error || !data) return <h2>Error</h2>;
@@ -20,13 +32,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {
-        data.allPosts.map((post) => (
-          <div className={styles.card}>
+        data.allPosts.map((post, i) => (
+          <div key={i} className={styles.card}>
             <div className={styles.card_title}>{post?.title}</div>
             <div className={styles.card_header}>{post?.description}</div>
           </div>
         ))
       }
+      <div>
+        {JSON.stringify(state.user)}
+      </div>
+      <div>
+        <button className={styles.btn} onClick={() => updateUserName()}>Change user name</button>
+      </div>
     </div>
   )
 }

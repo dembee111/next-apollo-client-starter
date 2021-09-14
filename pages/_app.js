@@ -4,7 +4,8 @@ import React from 'react';
 import { ApolloProvider } from '@apollo/client';
 import { AuthProvider  } from '../context/authContext';
 import { useApollo } from '../lib/apollo';
-
+import '../styles/global.css'
+import Layout from '../components/layout';
 
 const MyApp = ({ Component, pageProps }) => {
     const apolloClient = useApollo(pageProps.initialApolloState);
@@ -12,7 +13,9 @@ const MyApp = ({ Component, pageProps }) => {
     return (
         <AuthProvider>
             <ApolloProvider client={apolloClient}>
-                <Component {...pageProps} />
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
             </ApolloProvider>
         </AuthProvider>
     );

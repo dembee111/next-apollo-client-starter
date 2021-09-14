@@ -42,7 +42,7 @@ export default function Home() {
       <div>
         {JSON.stringify(state.user)}
       </div>
-      <div>
+      <div className="text-blue-600">
         <button className={styles.btn} onClick={() => updateUserName()}>Change user name</button>
       </div>
     </div>
